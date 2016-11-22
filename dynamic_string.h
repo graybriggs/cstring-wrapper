@@ -2,12 +2,9 @@
 #ifndef DYNAMIC_STRING_H
 #define DYNAMIC_STRING_H
 
-#define STRING_DEFAULT_LENGTH
-
 typedef unsigned int str_size;
 
 struct _string {
-
   char* str;
   str_size len;
 };
