@@ -25,6 +25,11 @@ int main() {
   println_string(&ss);
   delete_string(&ss);
 
+  string hi = new_string();
+  hi = concat_cstr(&hi, "hi");
+  println_string(&hi);
+  delete_string(&hi);
+
   delete_string(&myString);
   delete_string(&test);
   delete_string(&empty);
