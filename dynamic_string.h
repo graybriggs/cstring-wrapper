@@ -26,7 +26,7 @@ extern int str_find(string* this, const char* cstr);
 extern void str_print(const string* this);
 extern void str_println(const string* this);
 
-extern int str_toi(const string* this);
+extern int str_stoi(const string* this);
 
 extern void str_strip_front(const string* this);
 extern void str_strip_rear(const string* this);

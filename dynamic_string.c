@@ -105,7 +105,7 @@ void str_println(const string* this) {
   printf("%s\n", this->str);
 }
 
-int str_toi(const string* this) {
+int str_stoi(const string* this) {
   return 0;
 }
 
