@@ -5,33 +5,33 @@
 
 int main() {
 
-  string myString = make_string("hello");
-  println_string(&myString);
-  printf("%d\n", string_len(&myString));
-  myString = concat_cstr(&myString, ", world!");
-  println_string(&myString);
-  printf("%d\n", string_len(&myString));
+  string mystr = str_make("hello");
+  str_println(&mystr);
+  printf("%d\n", str_len(&mystr));
+  mystr = str_cstr_concat(&mystr, ", world!");
+  str_println(&mystr);
+  printf("%d\n", str_len(&mystr));
 
-  string test = make_string("hrr I am a pirate!");
-  myString = concat_string(&myString, &test);
+  string test = str_make("I am a pirate!");
+  mystr = str_concat(&mystr, &test);
 
-  println_string(&myString);
+  str_println(&mystr);
 
-  printf("%c\n",char_at(&test,11));  // p
+  printf("%c\n",str_char_at(&test,11));  // p
 
-  string empty = new_string(); // empty but allocated 1 char for null.
+  string empty = str_make_empty(); // empty but allocated 1 char for null.
 
-  string ss = substring(&test, 11, string_len(&test)); // careful - returns a live dynamically allocated object
-  println_string(&ss);
-  delete_string(&ss);
+  string ss = str_sub(&test, 11, str_len(&test)); // careful - returns a live dynamically allocated object
+  str_println(&ss);
+  str_delete(&ss);
 
-  string hi = new_string();
-  hi = concat_cstr(&hi, "hi");
-  println_string(&hi);
-  delete_string(&hi);
+  string hi = str_make_empty();
+  hi = str_cstr_concat(&hi, "hi");
+  str_println(&hi);
+  str_delete(&hi);
 
-  delete_string(&myString);
-  delete_string(&test);
-  delete_string(&empty);
+  str_delete(&mystr);
+  str_delete(&test);
+  str_delete(&empty);
   return 0;
 }

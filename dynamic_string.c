@@ -6,7 +6,7 @@
 #include <memory.h>
 #include <string.h>
 
-string make_string(const char* cstr) {
+string str_make(const char* cstr) {
 
   assert(cstr != NULL);
 
@@ -20,7 +20,7 @@ string make_string(const char* cstr) {
   return my_string;
 }
 
-string new_string() {
+string str_make_empty() {
 
   string my_string;
   my_string.str = malloc(sizeof(char));
@@ -31,42 +31,18 @@ string new_string() {
   return my_string;
 }
 
-str_size string_len(const string* str) {
+void str_delete(string* this) {
+  assert (this != NULL);
+
+  free(this->str);
+  this->str = NULL;
+}
+
+str_size str_len(const string* str) {
   return str->len;
 }
 
-string concat_cstr(string* this, const char* cstr) {
-
-  assert(this != NULL);
-  assert(cstr != NULL);
-
-  size_t length = strlen(cstr);
-
-  char* new_str = realloc(this->str, length + this->len * sizeof(char));
-
-  this->str = new_str;
-  strcat(this->str, cstr);
-  this->len += length;
-
-  return *this;
-}
-
-string concat_string(string* this, const string* other) {
-  //assert(this != NULL);
-  //assert(other != NULL);
-
-  size_t length = string_len(other);
-
-  char* new_str = realloc(this->str, length + this->len * sizeof(char));
-
-  this->str = new_str;
-  strcat(this->str, other->str);
-  this->len += length;
-
-  return *this;
-}
-
-string substring(const string* this, const int begin, const int end) {
+string str_sub(const string* this, const int begin, const int end) {
   assert(this != NULL);
 
   char* sub_str = malloc((end - begin) * sizeof(char));
@@ -83,24 +59,62 @@ string substring(const string* this, const int begin, const int end) {
   return new_str;
 }
 
-char char_at(const string* this, const int pos) {
+string str_cstr_concat(string* this, const char* cstr) {
+
+  assert(this != NULL);
+  assert(cstr != NULL);
+
+  size_t length = strlen(cstr);
+
+  char* new_str = realloc(this->str, length + this->len * sizeof(char));
+
+  this->str = new_str;
+  strcat(this->str, cstr);
+  this->len += length;
+
+  return *this;
+}
+
+string str_concat(string* this, const string* other) {
+  //assert(this != NULL);
+  //assert(other != NULL);
+
+  size_t length = str_len(other);
+
+  char* new_str = realloc(this->str, length + this->len * sizeof(char));
+
+  this->str = new_str;
+  strcat(this->str, other->str);
+  this->len += length;
+
+  return *this;
+}
+
+char str_char_at(const string* this, const int pos) {
 
   assert(this != NULL);
 
   return this->str[pos];
 }
 
-void delete_string(string* this) {
-  assert (this != NULL);
-
-  free(this->str);
-  this->str = NULL;
-}
-
-void print_string(const string* this) {
+void str_print(const string* this) {
   printf("%s", this->str);
 }
 
-void println_string(const string* this) {
+void str_println(const string* this) {
   printf("%s\n", this->str);
 }
+
+int str_toi(const string* this) {
+  return 0;
+}
+
+void str_strip_front(const string* this) {
+
+}
+
+void str_strip_rear(const string* this) {
+
+}
+
+
