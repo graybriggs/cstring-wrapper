@@ -16,7 +16,9 @@ extern string str_make(const char* cstr);
 extern string str_make_empty();
 extern void str_delete(string* this);
 extern str_size str_len(const string* this);
+extern str_size str_capacity(const string* this);
 
+extern string str_copy(const string* this);
 extern string str_sub(const string* this, const int begin, const int end); // returns a new string; deletion must be handled
 extern string str_cstr_concat(string* this, const char* cstr);
 extern string str_concat(string* this, const string* other);

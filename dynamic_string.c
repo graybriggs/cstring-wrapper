@@ -42,6 +42,25 @@ str_size str_len(const string* str) {
   return str->len;
 }
 
+str_size str_capacity(const string* str) {
+  return str->capacity;
+}
+
+string str_copy(const string* str) {
+
+  string str_cpy;
+  char* ns = malloc(strlen(str->str) + 1);
+  if (ns == NULL) {
+    printf("Failed to alloc memory for str_copy\n");
+  }
+  strcpy(ns, str->str);
+  str_cpy.str = ns;
+  str_cpy.len = str->len;
+  str_cpy.capacity = str->capacity;
+
+  return str_cpy;
+}
+
 string str_sub(const string* this, const int begin, const int end) {
   assert(this != NULL);
 
